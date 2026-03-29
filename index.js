@@ -3,7 +3,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/webhook', (req, res) => {
-  const token  = 'mitoken123';
+  const token = 'hotel_bot_token_2024';
   if (req.query['hub.verify_token'] === token) {
     res.send(req.query['hub.challenge']);
   } else {
@@ -21,6 +21,7 @@ app.post('/webhook', async (req, res) => {
   res.sendStatus(200);
 });
 
-app.listen(3000, () => {
-  console.log('✅ Bot del hotel escuchando en puerto 3000');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`✅ Bot del hotel escuchando en puerto ${PORT}`);
 });
